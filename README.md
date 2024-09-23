@@ -1,8 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 # <center>ACCOUNTING SYSTEM (nextJs)</center>
-<center>Author: [Jonel Hatwell](https://www.linkedin.com/in/jonel-hatwell/)</center>
-<center>Email: 📧 jonel.hatwell@gmail.com </center>
+
+Author: [Jonel Hatwell](https://www.linkedin.com/in/jonel-hatwell/)
+Email: 📧 jonel.hatwell@gmail.com
 
 ## Tech Stack
 
