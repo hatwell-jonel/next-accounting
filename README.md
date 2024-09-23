@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+https://clerk.com/docs/references/nextjs/auth-middleware - clear matcher
+https://www.davidhu.io/react-spinners/storybook/?path=/docs/beatloader--docs - LOADING ICON
+https://www.youtube.com/watch?v=1MTyCvS05V4&t=12501s - authjs tut
