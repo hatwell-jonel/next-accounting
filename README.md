@@ -36,7 +36,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
+## Resources
 
-https://clerk.com/docs/references/nextjs/auth-middleware - clear matcher
-https://www.davidhu.io/react-spinners/storybook/?path=/docs/beatloader--docs - LOADING ICON
-https://www.youtube.com/watch?v=1MTyCvS05V4&t=12501s - authjs tut
+- **Clerk Auth Middleware Documentation**: [Clerk Auth Middleware](https://clerk.com/docs/references/nextjs/auth-middleware)  
+  Details on implementing authentication middleware in Next.js, including matcher configuration.
+
+- **React Spinners BeatLoader Documentation**: [BeatLoader](https://www.davidhu.io/react-spinners/storybook/?path=/docs/beatloader--docs)  
+  Documentation and examples for using the BeatLoader loading icon in React applications.
+
+- **Auth.js Tutorial Video**: [Auth.js Tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4&t=12501s)  
+  A tutorial on using Auth.js for authentication in web applications.
