@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 # <center>ACCOUNTING SYSTEM (nextJs)</center>
 
-Author: [Jonel Hatwell](https://www.linkedin.com/in/jonel-hatwell/)
+Author: [Jonel Hatwell](https://www.linkedin.com/in/jonel-hatwell/)\
 Email: 📧 jonel.hatwell@gmail.com
 
 ## Tech Stack
