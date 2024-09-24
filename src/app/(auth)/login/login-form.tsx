@@ -1,20 +1,20 @@
 'use client'
-import React, { useTransition } from 'react'
+import React, { useTransition, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from '@/components/ui/card'
-import { credentialLogin } from '../actions'
+import { credentialLogin, getUser } from '../actions'
 import {LoginSchema} from "@/lib/types";
 import { BeatLoader } from 'react-spinners'
 
@@ -22,7 +22,8 @@ import { BeatLoader } from 'react-spinners'
 const LoginForm = () => {
 
     const [isPending, startTransition] = useTransition()
-
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -36,7 +37,8 @@ const LoginForm = () => {
             try {
                 credentialLogin(values)
             } catch (error) {
-                console.error(error)
+                console.error({error});
+                setErrorMessage("Login failed. Please try again.");  // Capture error
             }   
         })
     }
@@ -47,7 +49,6 @@ const LoginForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 py-6">
 
                     <h1 className='text-center text-xl mb-6'>ACCOUNTING SYSTEM</h1>
-                    {/* <h2 className='!m-0 !p-0 text-sm text-center text-slate-400'>ACCOUNTING SYSTEM</h2> */}
 
                     <FormField
                         control={form.control}
@@ -78,6 +79,10 @@ const LoginForm = () => {
                         </FormItem>
                         )}
                     />
+
+                    {errorMessage && (  // Display error message if it exists
+                        <p className="text-red-500 text-center">{errorMessage}</p>
+                    )}
 
                     <Button 
                         className="w-full" 
