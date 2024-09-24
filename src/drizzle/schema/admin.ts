@@ -26,7 +26,7 @@ export const users = accountingTable('users', {
     id: serial('id').primaryKey(),
     username: varchar('username', { length: 50 }).unique().notNull(),
     email: varchar('email', { length: 50 }).unique().notNull(),
-    password: varchar('password', { length: 50 }).notNull(),
+    password: varchar('password', { length: 256 }).notNull(),
     active: boolean('active').default(false).notNull(),
     role: mysqlEnum('role', ["user", "admin"] ).notNull(),
     ...defaultColumns,

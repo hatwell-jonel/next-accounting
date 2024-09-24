@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1727156151569,
+      "tag": "0000_large_the_stranger",
+      "breakpoints": true
+    }
+  ]
+}
