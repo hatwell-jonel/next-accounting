@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { db } from "./index";
-import { users } from "./schema";
+import { users, usersDetails } from "./schema";
 
 const usersData = [
     {
@@ -35,19 +35,19 @@ async function hashPasswords(users) {
 }
 
 
-// const usersDetailsData = [
-//     {
-//         id: 1,
-//         userId: 2,
-//         givenName: "John",
-//         middleName: "",
-//         familyName: "Doe",
-//         birthDate: "1990-01-01",
-//         age: "18",
-//         gender: "M",
-//         address: "123 Main Street, New York, NY 10001",
-//     },
-// ]
+const usersDetailsData = [
+    {
+        userId: 2,
+        givenName: "John",
+        middleName: "",
+        familyName: "Doe",
+        birthDate: "1990-01-01",
+        age: "18",
+        gender: "M",
+        address: "123 Main Street, New York, NY 10001",
+        createdBy: 0,
+    },
+]
 
 async function seed() {
 
@@ -63,7 +63,20 @@ async function seed() {
             },
             })
             .execute();
-        }
+    }
+
+    // seed usersDetails
+    for(const usersDetail of usersDetailsData){
+        await db
+        .insert(usersDetails)
+        .values(usersDetail)
+        .onDuplicateKeyUpdate({
+            set: {
+                updatedAt: new Date(),
+            },
+        })
+        .execute();
+    }
 
     console.log("Seeding complete.");
 }
@@ -76,6 +89,11 @@ seed()
 console.error("Seeding failed:", err);
 process.exit(1);
 });
+
+/**
+ * SET FOREIGN_KEY_CHECKS = 0; // Disable foreign key checks
+ * SET FOREIGN_KEY_CHECKS = 1; // Re-enable foreign key checks
+ */
 
 
 /**

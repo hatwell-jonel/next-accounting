@@ -1,5 +1,6 @@
 import { auth } from '@/auth';
 import React from 'react'
+import {UserData} from "./_server";
 
 const LandingPage = async () => {
   const session = await auth();
@@ -9,6 +10,7 @@ const LandingPage = async () => {
       Main
       <div>
         {JSON.stringify(session)}
+        <UserData />
       </div>
     </div>
   )
