@@ -11,6 +11,7 @@
     "db:seed": "dotenv tsx src/drizzle/seeder.ts"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.5.0",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.1",
