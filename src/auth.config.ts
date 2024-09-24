@@ -8,17 +8,22 @@ import {users} from "./drizzle/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from 'bcryptjs';
 
-const getUserByUsername = async (username: string, password : string) => {
+const getAuthUser = async (username: string, password : string) => {
+
     const user = await db.select().from(users).where(eq(users.username, username)).execute();
+    
     if (user.length === 0) {
         throw new Error("Username not found");
     }
+
     const hashedPassword = user[0].password;
     // Compare the provided password with the stored hashed password
     const isPasswordValid = await bcrypt.compare(password, hashedPassword);
+
     if (!isPasswordValid) {
         throw new Error("Invalid password");
     }
+
     // Return the user if the password is correct
     return user[0];
 }
@@ -33,16 +38,15 @@ export default {
                     throw new Error("Invalid input. Please check your username and password.");
                 }
                 const { username, password } = validatedFields.data;
-                // Fetch user from database (mocked here)
-                // const user = await getUserByUsername(username, password); // Implement this function to retrieve user data
+      
+                const user = await getAuthUser(username, password);
                 
                 // Check if user exists
-                // if (!user) {
-                    // throw new Error("User not found.");
-                // } 
+                if (!user) {
+                    throw new Error("User not found.");
+                } 
 
-                return {
-                };
+                return JSON.parse(JSON.stringify(user));
             },
         })
     ] 

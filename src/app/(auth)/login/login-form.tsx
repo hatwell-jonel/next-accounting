@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from '@/components/ui/card'
-import { credentialLogin, getUser } from '../actions'
+import { credentialLogin } from '../actions'
 import {LoginSchema} from "@/lib/types";
 import { BeatLoader } from 'react-spinners'
 
