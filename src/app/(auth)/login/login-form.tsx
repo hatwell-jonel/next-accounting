@@ -33,78 +33,78 @@ const LoginForm = () => {
     })
 
     function onSubmit(values: z.infer<typeof LoginSchema>) {
-        startTransition(() =>{
-            try {
-                credentialLogin(values)
-            } catch (error) {
-                console.error({error});
-                setErrorMessage("Login failed. Please try again.");  // Capture error
-            }   
+        startTransition(async () =>{
+            const res = await credentialLogin(values);
+            // Handle error
+            if (res) {
+                setErrorMessage(res);
+            } else {
+                setErrorMessage(null);
+            }
         })
     }
     return (
         <Card className="w-[350px]"> 
             <CardContent>
                 <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 py-6">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 py-6">
 
-                    <h1 className='text-center text-xl mb-6'>ACCOUNTING SYSTEM</h1>
+                        <h1 className='text-center text-xl mb-6'>ACCOUNTING SYSTEM</h1>
 
-                    <FormField
-                        control={form.control}
-                        name="username"
-                        render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Username</FormLabel>
-                            <FormControl>
-                            <Input 
-                                {...field} 
-                            />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
+                        <FormField
+                            control={form.control}
+                            name="username"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Username</FormLabel>
+                                <FormControl>
+                                <Input 
+                                    {...field} 
+                                />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                <Input type='password' {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+
+                        {errorMessage && (  // Display error message if it exists
+                            <p className="text-red-500 !mt-2">{errorMessage}</p>
                         )}
-                    />
 
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Password</FormLabel>
-                            <FormControl>
-                            <Input type='password' {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                        )}
-                    />
-
-                    {errorMessage && (  // Display error message if it exists
-                        <p className="text-red-500 text-center">{errorMessage}</p>
-                    )}
-
-                    <Button 
-                        className="w-full" 
-                        type="submit"
-                        disabled={isPending}
-                    >
-                        {
-                        isPending ? 
-                            // https://mhnpd.github.io/react-loader-spinner/docs/components/mutating-dots - loading icon
-                            <BeatLoader 
-                                color="#fff"
-                                size={8}
-                             />
-                            : 
-                            "Login"
-                        }
-                    </Button>
-                </form>
+                        <Button 
+                            className="w-full" 
+                            type="submit"
+                            disabled={isPending}
+                        >
+                            {
+                            isPending ? 
+                                // https://mhnpd.github.io/react-loader-spinner/docs/components/mutating-dots - loading icon
+                                <BeatLoader 
+                                    color="#fff"
+                                    size={8}
+                                />
+                                : 
+                                "Login"
+                            }
+                        </Button>
+                    </form>
                 </Form>
             </CardContent>
         </Card>
-
     )
 }
 

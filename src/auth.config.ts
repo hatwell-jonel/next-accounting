@@ -38,14 +38,7 @@ export default {
                     throw new Error("Invalid input. Please check your username and password.");
                 }
                 const { username, password } = validatedFields.data;
-      
                 const user = await getAuthUser(username, password);
-                
-                // Check if user exists
-                if (!user) {
-                    throw new Error("User not found.");
-                } 
-
                 return JSON.parse(JSON.stringify(user));
             },
         })
